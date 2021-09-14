@@ -127,3 +127,6 @@ then 有两个参数，一个成功一个失败，但是在参数位置写两个
 ```
 
 ```
+
+## 参考链接
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
