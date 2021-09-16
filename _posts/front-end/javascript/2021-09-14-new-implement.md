@@ -6,17 +6,29 @@ title: JS 中 new 的原理以及实现
 一句话总结：执行 new 关键词后，总是返回一个对象，要么是构造函数加空对象原型生成的对象，要么是构造函数 return 的对象
 
 ## 原理
-1. 创建一个新对象
-2. 新对象原型指向构造函数的 prototype
-3. 执行构造函数并传入参数
-4. 如果构造函数结果是一个对象，则返回这个对象，否则返回第一步创建的新对象
+1. 在内存中创建一个新对象
+2. 这个新对象内部的`[[Prototype]]`特性被赋值为构造函数的 prototype 属性。
+3. 构造函数内部的 this 被赋值为这个新对象(即 this 指向新对象)
+4. 执行构造函数内部的代码(给新对象添加属性)
+5. 如果构造函数返回非空对象，则返回该对象;否则，返回刚创建的新对象
+
+## 实现
+```
+const _new = function (fn, ...regs) {
+  const o = {};
+  o.__proto__ - fn.prototype
+  fn = fn.bind(o)
+  const res fn(...regs)
+  return (typeof res === 'object') ? res : o
+}
+```
 
 ## 简便实现
 ```
-const _new = (fn, ...rest) => {
-  const obj = Object.create(fn.prototype);
-  const result = fn.call(obj, ...rest);
-  return (typeof result === 'object') ? result : obj;
+const _new = function (fn, ...regs) {
+  const o = Object.create(fn.prototype);
+  const res = fn.call(obj, ...regs);
+  return (typeof res === 'object') ? res : o;
 };
 ```
 

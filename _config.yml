@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: 班启的记事本
+title: 班启的备忘录
 email: banqii@163.com
 description: >- # this means to ignore newlines until "author:"
   轻则失根，躁则失君。
