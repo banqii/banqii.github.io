@@ -58,3 +58,69 @@ function createSKU(){
 }
 
 createSKU()
+
+二面：
+
+http 如何实现可靠连接
+
+tcp 滑动窗口
+
+vue diff 算法
+
+单链表，及单链表的部分反转
+function Node(value) {
+  this.value = value;
+  this.next = null
+}
+
+let head = null;
+function create() {
+  head = new Node(1)
+  let p = head;
+  for (let i = 2; i < 10; i++) {
+    p.next = new Node(i);
+    p = p.next;
+  }
+}
+
+function reverse(si, ei) {
+  let p = head;
+  let i = 0;
+  let startNode = null;
+  let endNode = null;
+  while(p !== null) {
+    i++;
+    if (i === si) {
+      startNode = p;
+    }
+
+    if (startNode) {
+      const temp = p.next;
+      const endNode.next = p
+
+      if (i === ei) {
+        startNode.next.next = p.next;
+        startNode.next = p;
+      }
+    }
+    p = p.next;
+  }
+}
+
+function print() {
+  let p = head
+  while(p) {
+    console.log(p.value)
+    p = p.next
+  }
+}
+
+create();
+head.value
+print();
+reverse(1, 3);
+head.value
+print();
+
+
+
